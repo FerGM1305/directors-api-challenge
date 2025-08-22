@@ -5,20 +5,26 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- *
+ *Represents a Movie entity coming from the external API.
  * @author feres
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Movie {
+	// Map the JSON property "Title" to this field
     @JsonProperty("Title")
     private String title;
 
+    // Map the JSON property "Year" to this field
     @JsonProperty("Year")
     private String year;
 
+    // Map the JSON property "Director" to this field
     @JsonProperty("Director")
     private String director;
 
+    /**
+     * Default constructor required by Jackson for deserialization.
+     */
     public Movie() {
     }
 
@@ -27,7 +33,8 @@ public class Movie {
         this.year = year;
         this.director = director;
     }
-
+    
+    // Getters and setters
     public String getTitle() {
         return title;
     }

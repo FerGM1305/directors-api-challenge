@@ -5,23 +5,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 /**
- *
+ *Represents a paginated response from the Movie API.
+ * This class maps the JSON structure returned by the API
+ * into a Java object we can easily work with.
  * @author feres
  */
 public class MoviePageResponse {
 
+	 // The current page number
     private int page;
 
+    // Maps the JSON property "per_page" to this field
     @JsonProperty("per_page")
     private int perPage;
 
+    // The total number of records available
     private int total;
 
+    // Maps the JSON property "total_pages" to this field
     @JsonProperty("total_pages")
     private int totalPages;
 
+    // The actual list of movies for this page
     private List<Movie> data;
-
+    
+    public MoviePageResponse() {
+    }
+    
+    
+    // Full constructor to create a response manually
     public MoviePageResponse(int page, int perPage, int total, int totalPages, List<Movie> data) {
         this.page = page;
         this.perPage = perPage;
@@ -29,7 +41,9 @@ public class MoviePageResponse {
         this.totalPages = totalPages;
         this.data = data;
     }
-
+    
+    
+    // Getters and setters
     public int getPage() {
         return page;
     }

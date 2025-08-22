@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 /**
- *
+ * This class acts as a client to communicate with the external Movie API.
+ * It uses Spring's RestClient to send HTTP requests and parse responses.
  * @author feres
  */
 @Component
@@ -19,21 +20,26 @@ public class MovieClient {
         this.restClient = movieRestClient;
     }
     
+    // Fetches a page of movies from the external API.
     public MoviePageResponse getPage(int page) {
-        try {
+    	try {
             return restClient.get()
+                    // Build the request URL dynamically
                     .uri(uriBuilder -> uriBuilder
-                    .path("/api/movies/search")
-                    .queryParam("page", page)
-                    .build())
-                    .retrieve()
+                        .path("/api/movies/search")   // endpoint of the remote API
+                        .queryParam("page", page)    // attach the page parameter
+                        .build())
+                    .retrieve()  // Execute the request
+                    // If the API responds with an error status, throw a custom exception
                     .onStatus(HttpStatusCode::isError, (req, res) -> {
-                        throw new RemoteApiException("Error remoto: status="
+                        throw new RemoteApiException("Remote error: status="
                                 + res.getStatusCode(), null);
                     })
+                    // Deserialize the response body into a MoviePageResponse object
                     .body(MoviePageResponse.class);
         } catch (Exception ex) {
-            throw new RemoteApiException("Fallo al consumir la API de películas", ex);
+            // Wrap any unexpected errors in a custom exception
+            throw new RemoteApiException("Failed to consume the Movie API", ex);
         }
 
     }
