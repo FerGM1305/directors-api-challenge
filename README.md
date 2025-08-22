@@ -15,7 +15,8 @@ The service fetches movies from the API and returns a list of directors who have
 - [Project Structure](#project-structure)  
 - [Getting Started](#getting-started)  
 - [Usage](#usage)  
-- [Testing](#testing)  
+- [Testing](#testing)
+- [Postman Collection](#postman-collection)
 
 ---
 
@@ -77,6 +78,8 @@ directors/
 │    └─ java/
 │       └─ com/movies/directors/service/DirectorServiceTest.java
 └─ README.md
+│
+└─ directors-test.postman_collection.json
 ```
 
 ---
@@ -114,7 +117,28 @@ GET /api/directors?threshold={number}
 Unit tests are implemented with JUnit 5 and Mockito.  
 The `DirectorServiceTest` verifies that the filtering, counting, and sorting of directors works correctly.
 
+---
 
+## Postman Collection
+
+A Postman collection has been created to test the API endpoints.  
+You can import the collection into Postman to run the requests without configuring them manually.
+
+**Instructions to use the Postman collection:**
+
+1. Open Postman.
+2. Go to **File → Import → Choose File**.
+3. Select the provided `directors-test.postman_collection.json`.
+4. Run the request(s) to see the API responses.
+3. **Send the request**. You should see a JSON response like:
+
+```json
+[
+  "Martin Scorsese",
+  "Woody Allen"
+]
+
+---
 ## Notes
 
 - Only movies **from 2010 onwards** are considered.  
