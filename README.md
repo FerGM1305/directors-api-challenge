@@ -133,10 +133,12 @@ You can import the collection into Postman to run the requests without configuri
 3. **Send the request**. You should see a JSON response like:
 
 ```json
-[
-  "Martin Scorsese",
-  "Woody Allen"
-]
+{
+    "directors": [
+        "Martin Scorsese",
+        "Woody Allen"
+    ]
+}
 ```
 ---
 ## Notes
