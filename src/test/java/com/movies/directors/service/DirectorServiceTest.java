@@ -27,13 +27,13 @@ public class DirectorServiceTest {
     @Test
     void filtersAndSortsDirectorsStrictlyGreaterThanThreshold() {
                 
-        // Página 1
+        // Page 1
         var p1 = new MoviePageResponse(1, 10, 6, 2, List.of(
                 new Movie("A", "2011", "Woody Allen"),
                 new Movie("B", "2012", "Martin Scorsese"),
-                new Movie("C", "2009", "Old Director") // filtrado por año
+                new Movie("C", "2009", "Old Director") // year filter
         ));
-        // Página 2
+        // Page 2
         var p2 = new MoviePageResponse(2, 10, 6, 2, List.of(
                 new Movie("D", "2015", "Woody Allen"),
                 new Movie("E", "2016", "Woody Allen"),
